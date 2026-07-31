@@ -1,0 +1,22 @@
+{
+  "name": "solar-quotation-backend",
+  "version": "1.0.0",
+  "description": "Backend API for generating Solar GST Tax Invoice / Quotation PDFs, storing them in MongoDB",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^7.5.0",
+    "mongoose": "^8.5.0",
+    "pdfkit": "^0.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
