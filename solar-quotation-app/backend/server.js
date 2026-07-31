@@ -21,7 +21,7 @@ app.use(express.json());
 
 // Serve the frontend directly from Express too (optional convenience -
 // you can also open frontend/index.html separately or host it elsewhere)
-app.use(express.static(path.join(__dirname, "..", "frontend")));
+app.use(express.static(path.join(__dirname, "frontend")));
 
 app.use("/api", quotationRoutes);
 

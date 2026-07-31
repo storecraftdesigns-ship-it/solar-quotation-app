@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Solar Quotation Generator</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <h1>☀️ Solar Quotation Generator</h1>
+  <p>Generate professional GST tax-invoice style solar quotations, saved to MongoDB</p>
+</header>
+
+<main class="container">
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="create">Create Quotation</button>
+    <button class="tab-btn" data-tab="list">Saved Quotations</button>
+  </nav>
+
+  <!-- ============ CREATE TAB ============ -->
+  <section id="tab-create" class="tab-panel active">
+    <form id="quoteForm" class="card">
+
+      <fieldset>
+        <legend>Billing Entity</legend>
+        <label>Company / Firm *
+          <select name="companyKey" id="companyKey" required></select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>I. Customer Details</legend>
+        <label>Full Name of Applicant *
+          <input type="text" name="customerName" required placeholder="e.g. Aashish Kumar Rathore" />
+        </label>
+        <label>Primary Mobile Number *
+          <input type="tel" name="mobile" required pattern="[0-9]{10}" placeholder="10-digit mobile" />
+        </label>
+        <label>Installation Site Address *
+          <textarea name="address" required placeholder="e.g. Eco C.G. City, Plot No. 32"></textarea>
+        </label>
+        <div class="row">
+          <label>Pincode
+            <input type="text" name="pincode" placeholder="e.g. 490025" />
+          </label>
+          <label>BP / Service Number
+            <input type="text" name="bpNumber" placeholder="Electricity BP number" />
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>II. Reference / Field Agent (Optional)</legend>
+        <div class="row">
+          <label>Reference Name
+            <input type="text" name="referenceName" />
+          </label>
+          <label>Reference Contact
+            <input type="tel" name="referenceMobile" />
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>III. Regional Jurisdiction</legend>
+        <label>Select District *
+          <select name="district" id="district" required>
+            <option value="">-- Choose District --</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>IV. Technical Specifications &amp; Costing</legend>
+        <label>Solar System Type *
+          <select name="systemType" id="systemType" required></select>
+        </label>
+        <label>Select Solar System *
+          <select name="solarBrand" id="solarBrand" required>
+            <option value="">-- Select Solar System --</option>
+          </select>
+        </label>
+        <label>Sanctioned Load / System Capacity *
+          <select name="capacityKW" id="capacityKW" required>
+            <option value="">-- Select KW --</option>
+          </select>
+        </label>
+
+        <div class="price-hint" id="priceHint">Select brand and capacity to view reference List Price.</div>
+
+        <label>Net Payable / Grand Total Amount (₹) *
+          <input type="number" name="grandTotal" id="grandTotal" required min="0" step="1" placeholder="e.g. 205000" />
+        </label>
+
+        <label>Technical Remarks
+          <textarea name="remark" placeholder="Optional notes"></textarea>
+        </label>
+      </fieldset>
+
+      <button type="submit" class="btn-primary">AUTHORIZE &amp; GENERATE QUOTATION</button>
+      <p id="formMsg" class="form-msg"></p>
+    </form>
+  </section>
+
+  <!-- ============ LIST TAB ============ -->
+  <section id="tab-list" class="tab-panel">
+    <div class="card">
+      <div class="list-toolbar">
+        <input type="text" id="searchBox" placeholder="Search by name, mobile or invoice no." />
+        <button id="searchBtn" class="btn-secondary">Search</button>
+      </div>
+      <table class="quote-table">
+        <thead>
+          <tr>
+            <th>Invoice No.</th>
+            <th>Customer</th>
+            <th>Mobile</th>
+            <th>System</th>
+            <th>Grand Total</th>
+            <th>Date</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
+        <tbody id="quoteTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">© 2026 Solar Quotation Portal. For Official Use Only.</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
