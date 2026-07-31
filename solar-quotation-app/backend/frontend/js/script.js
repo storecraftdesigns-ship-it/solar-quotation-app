@@ -1,7 +1,5 @@
 // Change this if your backend runs on a different host/port
-const API_BASE = window.location.origin.includes("5000")
-  ? "/api"
-  : "http://localhost:5000/api";
+const API_BASE = "/api"
 
 const $ = (sel) => document.querySelector(sel);
 
